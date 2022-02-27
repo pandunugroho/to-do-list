@@ -14,3 +14,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+#__next {
+  background-image: linear-gradient(to right bottom,white,grey);
+  background-repeat: no-repeat;
+}
