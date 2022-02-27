@@ -1,9 +1,9 @@
-import { Button, Input, Modal, Form } from "antd"
+import { Button, Form, Input, Modal } from "antd"
 import { format } from "date-fns"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { AddForm } from "./AddForm"
-import { closeModal, completeTask, deleteTask, setModal, todoSelector } from "./redux/features/todoSlice"
+import { closeModal, completeTask, deleteTask, todoSelector } from "./redux/features/todoSlice"
 
 export const DetailModal = () => {
   const dispatch = useDispatch()
@@ -14,7 +14,6 @@ export const DetailModal = () => {
   useEffect(() => {
     form.setFieldsValue(modalData)
     setIsEdit(false)
-    // if (modalType === "Add") setIsEdit(true)
   }, [modalType])
 
   const submitEdit = () => {
