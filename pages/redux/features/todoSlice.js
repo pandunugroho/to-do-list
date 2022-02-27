@@ -6,6 +6,9 @@ export const fetchToDo = createAsyncThunk(
     try {
       const response = await fetch('https://virtserver.swaggerhub.com/hanabyan/todo/1.0.0/to-do-list')
       const data = await response.json()
+      data.forEach(item=>{
+        item.createdAt = new Date(item.createdAt)
+      })
       // const list = await data
       return { data }
     } catch (err) {
@@ -20,6 +23,8 @@ export const todoSlice = createSlice({
     data: [],
     isFetching: false,
     errorMessage: "",
+    modalType: "",
+    modalData: {}
   },
   reducers: {
     // reducers here
@@ -27,6 +32,13 @@ export const todoSlice = createSlice({
       state.isFetching = false;
 
       return state;
+    },
+    setModal: (state, { payload }) => {
+      state.modalType = payload.type
+      state.modalData = payload.modalData
+    },
+    completeTask: (state, { payload }) => {
+      state.data[payload.id] = payload.type
     },
   },
   extraReducers: {
@@ -49,6 +61,6 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { clearState } = todoSlice.actions;
+export const { clearState,setModal } = todoSlice.actions;
 
 export const todoSelector = (state) => state.todo;

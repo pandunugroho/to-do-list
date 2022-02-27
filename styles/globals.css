@@ -15,7 +15,35 @@ a {
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 !important;
+}
+
 #__next {
-  background-image: linear-gradient(to right bottom,white,lightgrey);
+  background-image: linear-gradient(to right bottom, white, lightgrey);
   background-repeat: no-repeat;
+}
+
+.to-do-list {
+  border: 1px solid lightblue;
+  margin-bottom: 12px;
+  border-radius: 5px;
+  padding: 12px 24px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list-done {
+  border-color: lightgray;
+  opacity: 0.5;
+}
+
+.btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
 }
