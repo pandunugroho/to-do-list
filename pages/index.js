@@ -2,7 +2,7 @@ import { Button, message, Spin } from 'antd'
 import Head from 'next/head'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { DetailModal } from './DetailModal'
+import DetailModal from './DetailModal'
 import { completeTask, fetchToDo, setModal, todoSelector } from './redux/features/todoSlice'
 
 export default function Home() {

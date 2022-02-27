@@ -2,10 +2,10 @@ import { Button, Form, Input, Modal } from "antd"
 import { format } from "date-fns"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { AddForm } from "./AddForm"
+import AddForm from "./AddForm"
 import { closeModal, completeTask, deleteTask, todoSelector } from "./redux/features/todoSlice"
 
-export const DetailModal = () => {
+const DetailModal = () => {
   const dispatch = useDispatch()
   const [form] = Form.useForm()
   const { modalType, modalData } = useSelector(todoSelector)
@@ -67,3 +67,5 @@ export const DetailModal = () => {
   </Modal>
   )
 }
+
+export default DetailModal

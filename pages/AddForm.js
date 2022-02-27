@@ -2,7 +2,7 @@ import { Button, Form, Input } from "antd"
 import { useDispatch, useSelector } from "react-redux"
 import { addTask, closeModal, todoSelector } from "./redux/features/todoSlice"
 
-export const AddForm = () => {
+const AddForm = () => {
   const [form] = Form.useForm()
   const { data } = useSelector(todoSelector)
   const dispatch = useDispatch()
@@ -34,3 +34,5 @@ export const AddForm = () => {
     </Form>
   </>
 }
+
+export default AddForm
