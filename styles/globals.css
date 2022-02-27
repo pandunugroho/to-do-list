@@ -16,6 +16,6 @@ a {
 }
 
 #__next {
-  background-image: linear-gradient(to right bottom,white,grey);
+  background-image: linear-gradient(to right bottom,white,lightgrey);
   background-repeat: no-repeat;
 }
