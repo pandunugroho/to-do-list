@@ -36,14 +36,32 @@ h6 {
   padding: 12px 24px;
   display: flex;
   justify-content: space-between;
+  background-color: #ffffff;
 }
 
 .list-done {
   border-color: lightgray;
   opacity: 0.5;
+  background-color: #ffffff22;
 }
 
 .btn-wrapper {
   display: flex;
   justify-content: flex-end;
+}
+.btn-wrapper button {
+  margin: 0 0 6px 12px;
+}
+.btn-add-task {
+  height: 60px;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid lightblue;
+  border-radius: 5px;
+  margin-bottom: 12px;
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  color: grey;
+  cursor: pointer;
 }

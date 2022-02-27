@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { id } from "date-fns/locale";
 
 export const fetchToDo = createAsyncThunk(
   "todo/fetch",
@@ -6,9 +7,9 @@ export const fetchToDo = createAsyncThunk(
     try {
       const response = await fetch('https://virtserver.swaggerhub.com/hanabyan/todo/1.0.0/to-do-list')
       const data = await response.json()
-      data.forEach(item=>{
-        item.createdAt = new Date(item.createdAt)
-      })
+      // data.forEach(item => {
+      //   item.createdAt = new Date(item.createdAt)
+      // })
       // const list = await data
       return { data }
     } catch (err) {
@@ -37,14 +38,23 @@ export const todoSlice = createSlice({
       state.modalType = payload.type
       state.modalData = payload.modalData
     },
+    closeModal: (state) => {
+      state.modalType = ""
+      state.modalData = {}
+    },
     completeTask: (state, { payload }) => {
-      state.data[payload.id] = payload.type
+      state.data[state.data.findIndex(item => item.id === payload.id)] = payload
+    },
+    deleteTask: (state, { payload }) => {
+      state.data.splice(state.data.findIndex(item => item.id === payload.id), 1)
+    },
+    addTask: (state, { payload }) => {
+      state.data = payload.data
     },
   },
   extraReducers: {
     // extra reducers here
     [fetchToDo.fulfilled]: (state, { payload }) => {
-      // console.log("(fulfilled) payload: ", payload);
       state.data = payload.data
       state.isFetching = false;
       state.errorMessage = ""
@@ -54,13 +64,12 @@ export const todoSlice = createSlice({
       state.isFetching = true;
     },
     [fetchToDo.rejected]: (state, { payload }) => {
-      // console.log("(rejected) payload: ", payload);
       state.isFetching = false;
       state.errorMessage = payload.message;
     },
   },
 });
 
-export const { clearState,setModal } = todoSlice.actions;
+export const { clearState, setModal, closeModal, completeTask, deleteTask, addTask } = todoSlice.actions;
 
 export const todoSelector = (state) => state.todo;
